@@ -5,10 +5,11 @@ import { db } from '@/db';
 import { z } from 'zod';
 import slugify from 'slugify';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import type { Product } from '@prisma/client';
 import { ProductFormState } from '@/types';
 
-export const createProductSchema = z.object({
+const createProductSchema = z.object({
   title: z.string().min(2, { message: 'Must be 2 or more characters long' }).toLowerCase(),
   category: z.string().min(2, { message: 'Must be 2 or more characters long' }).toLowerCase(),
   description: z.string().min(5, { message: 'Must be 5 or more characters long' }).toLowerCase(),
@@ -28,6 +29,7 @@ export const createProduct = async (formState: ProductFormState, formData: FormD
   });
 
   if (!result.success) {
+    console.log(result.error.flatten().fieldErrors);
     return { errors: result.error.flatten().fieldErrors };
   }
 
@@ -55,5 +57,5 @@ export const createProduct = async (formState: ProductFormState, formData: FormD
     }
   }
   revalidatePath(PATHS.home());
-  return formState;
+  redirect(PATHS.home());
 };

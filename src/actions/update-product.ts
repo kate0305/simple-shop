@@ -2,6 +2,7 @@
 
 import type { Product } from '@prisma/client';
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { db } from '@/db';
 import { z } from 'zod';
 import slugify from 'slugify';
@@ -30,6 +31,7 @@ export const updateProduct = async (formState: ProductFormState, formData: FormD
   });
 
   if (!result.success) {
+    console.log(result.error.flatten().fieldErrors);
     return { errors: result.error.flatten().fieldErrors };
   }
 
@@ -63,5 +65,5 @@ export const updateProduct = async (formState: ProductFormState, formData: FormD
 
   revalidatePath(PATHS.home());
   revalidatePath(`${PATHS.showProduct(slugify(newProduct.slug))}-${id}`, 'page');
-  return formState;
+  redirect(PATHS.home());
 };

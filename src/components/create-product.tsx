@@ -1,10 +1,10 @@
 'use client';
 
 import { useFormState } from 'react-dom';
-import { updateProduct } from '@/actions';
+import { createProduct } from '@/actions';
 import { ProductForm } from '@/components/product-form';
 
 export const CreateProduct = () => {
-  const [formState, action] = useFormState(updateProduct, { errors: {} });
+  const [formState, action] = useFormState(createProduct, { errors: {} });
   return <ProductForm typeForm='create' btnText='Create Product' action={action} />;
 };
