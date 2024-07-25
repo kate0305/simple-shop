@@ -18,9 +18,9 @@
       }
     ],
     "paths": {
-      "@components/*": ["./src/*"]
+      "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/app/admin/@create/page.tsx", "src/app/admin/@update/page.tsx"],
   "exclude": ["node_modules"]
 }
