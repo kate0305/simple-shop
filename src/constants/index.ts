@@ -1,4 +1,5 @@
 export const PRODUCT_FORM = {
+    id: 'id',
   title: 'title',
   category: 'category',
   description: 'description',

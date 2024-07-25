@@ -1,11 +1,11 @@
-import { PATHS } from "@/constants";
-import { caveat } from "@/utils/fonts";
-import Link from "next/link";
+import Link from 'next/link';
+import { PATHS } from '@/constants';
+import { caveat } from '@/utils/fonts';
 
 export const Header = () => {
   return (
     <header className='lg:px-16 px-4 bg-white shadow-md'>
-      <div className='container mx-auto flex flex-wrap items-center px-4 py-4'>
+      <div className='container mx-auto flex flex-wrap items-center px-4 py-2'>
         <h1 className='flex-1 flex justify-between items-center text-4xl font-bold text-emerald-700'>
           <Link href={PATHS.home()} className={caveat.className}>
             SLMax Shop

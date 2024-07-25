@@ -23,3 +23,10 @@ export const getProductsList = async () =>
       price: true,
     },
   });
+
+export const getProductsId = async () =>
+  await db.product.findMany({
+    select: {
+      id: true,
+    },
+  });

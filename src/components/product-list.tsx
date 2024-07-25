@@ -1,4 +1,4 @@
-import { getProductsList } from '@/actions';
+import { getProductsList } from '@/db/queries';
 import { ProductCard } from './product-card';
 
 export const ProductList = async () => {
